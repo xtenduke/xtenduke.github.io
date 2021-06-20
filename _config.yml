@@ -26,7 +26,6 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 author:
   name: Jake Laurie
 
-minima:
   
 # Build settings
 theme: minima
