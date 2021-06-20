@@ -1,0 +1,12 @@
+I"ý<p>Empty blog post
+Hey cool itâ€™s a code snippet</p>
+
+<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="c">// Reads a buffer into a String Vec.</span>
+<span class="k">fn</span> <span class="nf">read_bytes</span><span class="p">(</span><span class="n">bytes</span><span class="p">:</span> <span class="o">&amp;</span><span class="p">[</span><span class="nb">u8</span><span class="p">])</span> <span class="k">-&gt;</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nn">String</span><span class="p">::</span><span class="nf">from_utf8_lossy</span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span>
+        <span class="nf">.split</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+        <span class="nf">.map</span><span class="p">(|</span><span class="n">val</span><span class="p">|</span> <span class="n">val</span><span class="nf">.to_owned</span><span class="p">())</span>
+        <span class="nf">.collect</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+
+:ET
