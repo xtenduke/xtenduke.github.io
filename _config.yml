@@ -28,7 +28,6 @@ author:
 
   
 # Build settings
-theme: minima
 minima:
   skin: dark
   social_links:
