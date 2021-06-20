@@ -20,13 +20,23 @@
 
 title: xtenduke
 description: >- # this means to ignore newlines until "baseurl:"
-    I’m Jake, a Software engineer, I like to make things and break things apart
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-github_username: xtenduke 
 
+author:
+  name: Jake Laurie
+
+minima:
+  
 # Build settings
 theme: minima
+minima:
+  skin: dark
+  social_links:
+    twitter: xtenduke
+    github: xtenduke
+
+
 plugins:
   - jekyll-feed
 
