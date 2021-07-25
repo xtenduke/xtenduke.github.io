@@ -63,9 +63,9 @@ Address: 142.250.204.14
 For some reason, Nodes can't reach the node-local DNS server.
 
 **Known issue?**\
-Multiple users of K3s have reported this, and it seems that it is a kernel or distro issue
-https://github.com/k3s-io/k3s/issues/3624
-https://github.com/k3s-io/k3s/issues/1527
+Multiple users of K3s have reported this, and it seems that it is a kernel or distro issue, see\
+<https://github.com/k3s-io/k3s/issues/3624> and
+<https://github.com/k3s-io/k3s/issues/1527>
 
 **Temporary fix**\
  Configuring flannel (the container network interface used by k9s) to use `host-gw`\
