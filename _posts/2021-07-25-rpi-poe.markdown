@@ -5,28 +5,30 @@ date:   2021-06-20 14:40:16 +1200
 categories: rpi
 ---
 
-For those who want to run Ubuntu64 bit distros and not the "beta" 64 bit distro of raspbian on their PI4 with POE+ Hat
+For those who want to run Ubuntu64 bit distros and not the "beta" 64 bit distro of raspbian on their PI4 with POE+ Hat\
 Unfortunately, the new POE+ hat fan does not work OOB in Ubuntu 21.04 (and probably in prior versions)
 
-1) Verify you have no entry in 
-`/sys/class/thermal/cooling_device0`
-If the entry contains
-`$ cat /sys/class/thermal/cooling_device0/type`
-`rpi-poe-fan`
-Skip to step 5
+### Verify you have no entry in
+`$ cat /sys/class/thermal/cooling_device0/type`\
+If you get back
+`rpi-poe-fan`\
+you can skip to editing the boot config file
 
-2) Make sure all packages are up to date and reboot
-`$ apt update && apt upgrade`
+### Make sure all packages are up to date
+`$ apt update && apt upgrade`\
+reboot the pi
 
-3) install raspi-config package and raspi lib
+### install raspi-config package and raspi lib
 `$ apt install libraspberrypi-bin raspi-config`
 
-4) run the raspi-config binary
+### Run the raspi-config binary
 `$ raspi-config`
-select "Interface Options"
-enable the I2c module, reboot
 
-5) Add the following to `/boot/firmware/config.txt` 
+select "Interface Options"\
+enable the I2c module\
+reboot the pi
+
+### Add the following to `/boot/firmware/config.txt` 
 It should be pre-popuated by many other config lines (by raspi-config)
 ```
 # fan
@@ -38,4 +40,4 @@ dtparam=poe_fan_temp3=70000,poe_fan_temp3_hyst=5000
 
 ```
 
-6) reboot and the fan should kick in at 70 degrees
+You can now reboot your system, the fan should kick in at 70 degrees celsius
