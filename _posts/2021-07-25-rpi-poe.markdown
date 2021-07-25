@@ -8,27 +8,27 @@ categories: rpi
 For those who want to run Ubuntu64 bit distros and not the "beta" 64 bit distro of raspbian on their PI4 with POE+ Hat\
 Unfortunately, the new POE+ hat fan does not work OOB in Ubuntu 21.04 (and probably in prior versions)
 
-### Verify you have no entry in
+**Verify you have no entry in** \
 `$ cat /sys/class/thermal/cooling_device0/type`\
 If you get back
 `rpi-poe-fan`\
 you can skip to editing the boot config file
 
-### Make sure all packages are up to date
+**Make sure all packages are up to date**\
 `$ apt update && apt upgrade`\
 reboot the pi
 
-### install raspi-config package and raspi lib
+**Install raspi-config package and raspi lib**\
 `$ apt install libraspberrypi-bin raspi-config`
 
-### Run the raspi-config binary
+**Run the raspi-config binary**\
 `$ raspi-config`
 
-select "Interface Options"\
-enable the I2c module\
-reboot the pi
+- select `Interface Options`\
+- enable the I2c module\
+- reboot the pi
 
-### Add the following to `/boot/firmware/config.txt` 
+**Add the following to** `/boot/firmware/config.txt` \
 It should be pre-popuated by many other config lines (by raspi-config)
 ```
 # fan
