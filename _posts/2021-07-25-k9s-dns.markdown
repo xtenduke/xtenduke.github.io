@@ -69,6 +69,7 @@ Multiple users of K3s have reported this, and it seems that it is a kernel or di
 
 **Temporary fix**\
  Configuring flannel (the container network interface used by k9s) to use `host-gw`\
- The drawback to `host-gw` as the backend is that it requires layer2 connection between all nodes. This isn't a problem for my deployment as they are all connected to the same switch
+ The drawback to `host-gw` as the backend is that it requires layer2 connection between all nodes. as documented [here](https://github.com/flannel-io/flannel/blob/master/Documentation/backends.md)\
+ This isn't a problem for my deployment as they are all connected to the same switch.
 
 
