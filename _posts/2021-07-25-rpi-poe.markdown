@@ -1,0 +1,41 @@
+---
+layout: post
+title:  "Configuring POE+ HAT Fan for Raspberry PI 4 on Ubuntu"
+date:   2021-06-20 14:40:16 +1200
+categories: rpi
+---
+
+For those who want to run Ubuntu64 bit distros and not the "beta" 64 bit distro of raspbian on their PI4 with POE+ Hat
+Unfortunately, the new POE+ hat fan does not work OOB in Ubuntu 21.04 (and probably in prior versions)
+
+1) Verify you have no entry in 
+`/sys/class/thermal/cooling_device0`
+If the entry contains
+`$ cat /sys/class/thermal/cooling_device0/type`
+`rpi-poe-fan`
+Skip to step 5
+
+2) Make sure all packages are up to date and reboot
+`$ apt update && apt upgrade`
+
+3) install raspi-config package and raspi lib
+`$ apt install libraspberrypi-bin raspi-config`
+
+4) run the raspi-config binary
+`$ raspi-config`
+select "Interface Options"
+enable the I2c module, reboot
+
+5) Add the following to `/boot/firmware/config.txt` 
+It should be pre-popuated by many other config lines (by raspi-config)
+```
+# fan
+dtoverlay=rpi-poe
+dtparam=poe_fan_temp0=80000,poe_fan_temp0_hyst=2000
+dtparam=poe_fan_temp1=78000,poe_fan_temp1_hyst=5000
+dtparam=poe_fan_temp2=73000,poe_fan_temp2_hyst=3000
+dtparam=poe_fan_temp3=70000,poe_fan_temp3_hyst=5000
+
+```
+
+6) reboot and the fan should kick in at 70 degrees
