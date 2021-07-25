@@ -24,7 +24,7 @@ reboot the pi
 `$ raspi-config`
 
 - select `Interface Options`
-- enable the I2c module\
+- enable the I2c module
 - reboot the pi
 
 **Add the following to the firmware config file** `/boot/firmware/config.txt` \ 
