@@ -1,0 +1,74 @@
+---
+layout: post
+title:  "K9s DNS resolution issues"
+date:   2021-06-20 14:40:16 +1200
+categories: kubernetes
+---
+
+Recently, I have 'discovered' DNS lookup issues from pods in K3S on my Raspberry Pi cluster.\
+It seems that some pods on the same node, seemingly at random have DNS lookup issues, although DNS on the host works just fine.\
+A host restart of the Node with the problem usually resolves the issue, but i'd rather get to the bottom of it.
+
+Node (pi0)
+```
+<<K9s-Shell>> Pod: default/defiant-defiant-kube-5768879777-6gxv8 | Container: defiant-kube 
+/app # nslookup defiant-defiant-kube.default.svc.cluster.local
+;; connection timed out; no servers could be reached
+
+/app # nslookup google.com
+;; connection timed out; no servers could be reached
+
+/app # 
+```
+
+Host (pi0)
+```
+Last login: Sun Jul 25 05:21:24 2021 from 192.168.1.239
+ubuntu@pi0:~$ nslookup google.com
+Server:         127.0.0.53
+Address:        127.0.0.53#53
+
+Non-authoritative answer:
+Name:   google.com
+Address: 142.250.66.174
+
+ubuntu@pi0:~$ 
+```
+
+Node (pi1)
+```
+/app # nslookup defiant-defiant-kube.default.svc.cluster.local
+Server:         10.43.0.10
+Address:        10.43.0.10:53
+
+Name:   defiant-defiant-kube.default.svc.cluster.local
+Address: 10.42.3.131
+Name:   defiant-defiant-kube.default.svc.cluster.local
+Address: 10.42.0.114
+[TRUNCATED]
+
+/app # nslookup google.com
+Server:         10.43.0.10
+Address:        10.43.0.10:53
+
+Non-authoritative answer:
+Name:   google.com
+Address: 142.250.204.14
+
+/app # 
+
+```
+
+"no servers could be reached"\
+For some reason, Nodes can't reach the node-local DNS server.
+
+**Known issue?**\
+Multiple users of K3s have reported this, and it seems that it is a kernel or distro issue
+https://github.com/k3s-io/k3s/issues/3624
+https://github.com/k3s-io/k3s/issues/1527
+
+**Temporary fix**\
+ Configuring flannel (the container network interface used by k9s) to use `host-gw`\
+ The drawback to `host-gw` as the backend is that it requires layer2 connection between all nodes. This isn't a problem for my deployment as they are all connected to the same switch
+
+
