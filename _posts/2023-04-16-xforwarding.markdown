@@ -10,7 +10,7 @@ categories: linux
 ![XForwarded Desktop](https://raw.githubusercontent.com/xtenduke/xtenduke.github.io/dd981bf1f297b5b98b977b897b7af6de6335971a/assets/images/xforward.png "Xforwarded desktop")
 
 ## WSLg
-Microsoft's WSLg really impressed me it gives you the ability to run GPU accelerated graphical linux applications in Windows through a RDP over a HV socket. While WSL(2) and WSLg are super cool pieces of cobbled together tech (yeah I love jank), the drawbacks I have found in WSL far outweighed the convenience of being able to launch graphical applications from windows.
+Microsoft's WSLg really impressed me, it gives you the ability to run GPU accelerated graphical linux applications in Windows through a RDP over a HV socket. While WSL(2) and WSLg are super cool pieces of cobbled together tech (yeah I love jank), the drawbacks I have found in WSL far outweighed the convenience of being able to launch graphical applications from windows.
 
 ![WSLg](https://raw.githubusercontent.com/xtenduke/xtenduke.github.io/c6902a08b838aaa54242272d6c187a26abaea585/assets/images/wsl-wayland.png "WSLg")
 
