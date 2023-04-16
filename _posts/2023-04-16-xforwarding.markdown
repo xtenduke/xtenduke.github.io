@@ -5,14 +5,14 @@ date:   2023-04-16 14:40:16 +1200
 categories: linux
 ---
 
-## 2023 Year of linux on the desktop? XForwarding gnu/linux applications into your Windows environment
+## XForwarding gnu/linux applications into your Windows environment
 
-<img src="https://raw.githubusercontent.com/xtenduke/xtenduke.github.io/dd981bf1f297b5b98b977b897b7af6de6335971a/assets/images/xforward.png"  width="80%">
+![XForwarded Desktop](https://raw.githubusercontent.com/xtenduke/xtenduke.github.io/dd981bf1f297b5b98b977b897b7af6de6335971a/assets/images/xforward.png "Xforwarded desktop")
 
 ## WSLg
 Microsoft's WSLg really impressed me it gives you the ability to run GPU accelerated graphical linux applications in Windows through a RDP over a HV socket. While WSL(2) and WSLg are super cool pieces of cobbled together tech (yeah I love jank), the drawbacks I have found in WSL far outweighed the convenience of being able to launch graphical applications from windows.
 
-<img src="https://raw.githubusercontent.com/xtenduke/xtenduke.github.io/c6902a08b838aaa54242272d6c187a26abaea585/assets/images/wsl-wayland.png"  width="60%" alt="Microsoft">
+![WSLg](https://raw.githubusercontent.com/xtenduke/xtenduke.github.io/c6902a08b838aaa54242272d6c187a26abaea585/assets/images/wsl-wayland.png "WSLg")
 
 
 ## Why not WSLg
@@ -67,5 +67,5 @@ Graphics performance is fine for web browsing and other non-demanding tasks. Unf
 
 
 ## What's next?
-I am investigating the possibility of replicating Microsofts WSLg implementation on Hyper-V VMs. Stay tuned
+I am investigating the possibility of replicating Microsofts WSLg implementation on Hyper-V VMs, stay tuned.
 
