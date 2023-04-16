@@ -9,16 +9,11 @@ categories: linux
 
 <img src="https://raw.githubusercontent.com/xtenduke/xtenduke.github.io/dd981bf1f297b5b98b977b897b7af6de6335971a/assets/images/xforward.png"  width="80%">
 
-</br>
-</br>
-
 ## WSLg
 Microsoft's WSLg really impressed me it gives you the ability to run GPU accelerated graphical linux applications in Windows through a RDP over a HV socket. While WSL(2) and WSLg are super cool pieces of cobbled together tech (yeah I love jank), the drawbacks I have found in WSL far outweighed the convenience of being able to launch graphical applications from windows.
 
 <img src="https://raw.githubusercontent.com/xtenduke/xtenduke.github.io/c6902a08b838aaa54242272d6c187a26abaea585/assets/images/wsl-wayland.png"  width="60%" alt="Microsoft">
 
-</br>
-</br>
 
 ## Why not WSLg
 
@@ -27,21 +22,15 @@ Microsoft's WSLg really impressed me it gives you the ability to run GPU acceler
 - Networking weirdness
 - Slow filesystem
 
-</br>
-
 ## Ditching WSL
 I expect these issues to be resolved in the future, but in the meantime, due to these drawbacks, I ended up running linux VMs in Hyper-V, accessing them over SSH.
 This gives almost native performance, Hyper-v is a type 1 hypervisor, in contrast to other offerings like Virutalbox (yuck, Oracle), or VMware Workstation ($$).
-
-</br>
 
 ## Graphical applications
 The main drawback of running linux in Hyper-V is the terrible graphical performance in the rare case that I need to run a gui app. Tools like the Remote extension for VS Code, and Jetbrains Gateway give you the ability to have a Windows gpu accelerated IDE, which is really sending instructions to a remote machine over SSH (my linux VM in this case).
 
 But what if you want to run other GUI applications?
 
-
-</br>
 
 ## XFowarding into windows
 There are a few ways to do this, the best way I have found is to use a piece of commercial software called [X410](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwi0yvui3K3-AhVA-jgGHTiKB2IQFnoECAwQAQ&url=https%3A%2F%2Fx410.dev%2F&usg=AOvVaw0pWaga9LvxlM_MbiFptB1h)
@@ -52,8 +41,6 @@ Setup is reasonably straight forward, I followed the VSock [guide](https://www.g
 ## XFowarding Issues
 ### Gnome
 Gnome often had issues starting, I figured there was some incompatibility with the X410 xserver implementation. Since i'm not really using the Gnome desktop environment, just windows management, XFCE4 is a much better option.
-
-<br>
 
 ### Launching applications... sucks
 
