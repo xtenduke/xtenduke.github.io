@@ -1,0 +1,81 @@
+---
+layout: post
+title:  "Fedora 38 - nVidia driver issues after update"
+date:   2023-06-28 00:00:00 +0
+categories: linux
+---
+
+Nvidia drivers on my Fedora 38 machine stopped working after an update, my usual debugging steps didn't work.
+Symptoms were choppy rendering and high gnome-shell cpu usage, huh.. 
+
+So I ran `nvidia-smi` to see what was going on
+
+```
+ $ nvidia-smi
+ Failed to initialize NVML: Driver/library version mismatch
+ NVML library version: 535.54
+```
+
+Weird, i'm not that familiar with nvidia driver packages, I assume something's been overwritten / a partial update has occurred. Time to reinstall akmod-nvidia and reboot.
+
+```
+ $ sudo dnf reinstall akmod-nvidia
+ ...
+ # reboot... 
+```
+
+Still no luck, lets make sure that the nvidia kernel modules are loaded
+
+```
+ $ lsmod | grep nvidia
+nvidia_drm             94208  13
+nvidia_modeset       1560576  18 nvidia_drm
+nvidia_uvm           3493888  0
+nvidia              62517248  978 nvidia_uvm,nvidia_modeset
+video                  73728  2 asus_wmi,nvidia_modeset
+```
+
+Looks fine, check dmesg for issues?
+
+```
+ $ sudo dmesg | grep nvidia
+```
+
+And I found this
+
+```
+[   34.453610] NVRM: API mismatch: the client has the version 535.54.03, but
+               NVRM: this kernel module has the version 530.41.03.  Please
+               NVRM: make sure that this kernel module and all NVIDIA driver
+               NVRM: components have the same version.
+```
+
+Not really sure what NVRM is, but I assume it's part of nVidia driver or cuda libs, so I reinstalled the driver, and the cuda package to no avail...
+
+It seems NVRM is closely related to the nvidia kernel module, lets rebuild the initramfs and reboot.
+
+```
+ $ sudo dracut -f
+```
+
+Success! After rebuilding initramfs and rebooting, I have HW acceleration back, and nvidia-smi is reporting.
+
+```
+$ nvidia-smi
+Wed Jun 28 07:42:25 2023
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.54.03              Driver Version: 535.54.03    CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA GeForce RTX 3080 Ti     Off | 00000000:08:00.0  On |                  N/A |
+|  0%   49C    P8              19W / 350W |    792MiB / 12288MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+```
+
+
+
+
