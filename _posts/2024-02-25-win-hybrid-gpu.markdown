@@ -28,8 +28,9 @@ Based on information from Nvidia control panels "gpu activity icon" I have been 
 ### Monitoring
 Open the Nvidia control panel - Desktop -> Display GPU Activity Icon in notification area.
 
-![nvcp](https://github.com/xtenduke/xtenduke.github.io/blob/7e74a7d8c323a8f589b38ffa7a11085ec7e088e8/assets/images/nvidia-dgpu-cp-option.png)
-![tray](https://github.com/xtenduke/xtenduke.github.io/blob/7e74a7d8c323a8f589b38ffa7a11085ec7e088e8/assets/images/nvidia-dgpu-tray.png)
+
+![nvcp](https://raw.githubusercontent.com/xtenduke/xtenduke.github.io/7e74a7d8c323a8f589b38ffa7a11085ec7e088e8/assets/images/nvidia-dgpu-cp-option.png "nvcp")
+![tray](https://raw.githubusercontent.com/xtenduke/xtenduke.github.io/7e74a7d8c323a8f589b38ffa7a11085ec7e088e8/assets/images/nvidia-dgpu-tray.png "tray")
 
 ### Solution
 Disable and re-enable the nvidia dGPU when you undock.
