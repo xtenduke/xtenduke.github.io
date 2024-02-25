@@ -48,3 +48,6 @@ I used this command prompt convenience script to call the PS script manually, bu
 powershell -ExecutionPolicy Bypass -File c:\Users\jake\Desktop\battery.ps1
 ```
 
+
+### Result
+'convincing' the dGPU to turn off changes this machine from having 1.5h battery life, to 3-4h (usage dependant), which I consider a massive win. Even if I am forced to run windows.
