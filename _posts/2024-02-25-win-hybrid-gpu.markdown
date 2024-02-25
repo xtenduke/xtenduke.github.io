@@ -31,6 +31,7 @@ Open the Nvidia control panel - Desktop -> Display GPU Activity Icon in notifica
 Disable and re-enable the nvidia dGPU when you undock.
 The `battery.ps1` powershell script disables the nvidia GPU and re-enables it which effectively kicks all processes running on the dGPU off. Be warned that this may unsafely kill any applications you are using that depend on the dGPU, but i've had no issues with things like browsers etc, ymmv.
 
+`battery.ps1`
 ```battery.ps1
 Get-PnpDevice -Class "Display" | Where-Object Manufacturer -eq "NVIDIA" | Disable-PnpDevice -Confirm:$false
 Get-PnpDevice -Class "Display" | Where-Object Manufacturer -eq "NVIDIA" | Enable-PnpDevice -Confirm:$false
@@ -38,6 +39,7 @@ Get-PnpDevice -Class "Display" | Where-Object Manufacturer -eq "NVIDIA" | Enable
 
 I used this command prompt convenience script to call the PS script manually, but for long term use you probably want to automate this based on power events or display PNP events.
 
+`battery.cmd`
 ```battery.cmd
 powershell -ExecutionPolicy Bypass -File c:\Users\jake\Desktop\battery.ps1
 ```
