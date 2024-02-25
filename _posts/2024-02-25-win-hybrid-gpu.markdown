@@ -22,6 +22,7 @@ Typical behaviour in Windows for hybrid GPU setups is that the "High performance
 - An external display is plugged in
 
 My experience has been that the dGPU doesn't actually power down when the external display is disconnected, resulting in terrible battery life after unplugging my machine from displays.
+
 Based on information from Nvidia control panels "gpu activity icon" I have been able to deduce that the dGPU isn't powering down because there are applications running on it. To me this shows that it's a windows issue, surprise surprise...
 
 ### Monitoring
